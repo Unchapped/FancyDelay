@@ -5,31 +5,15 @@
 
 class FancyDelay{
   unsigned long _period, _last;
-
+  unsigned long (*_timebase)();
+  
   public:
-  FancyDelay(unsigned long period) : _period(period) {
-    _last = millis();
+  FancyDelay(unsigned long period, unsigned long (*timebase)() = millis) : _period(period), _timebase(timebase) {
+    _last = _timebase();
   }
 
   bool ready(){
-    if((millis() - _last) >= _period){
-      _last += _period;
-      return true;
-    }
-    return false;
-  }
-};
-
-class FancyMicrosDelay{
-  unsigned long _period, _last;
-
-  public:
-  FancyMicrosDelay(unsigned long period) : _period(period) {
-    _last = micros();
-  }
-
-  bool ready(){
-    if((micros() - _last) >= _period){
+    if((_timebase() - _last) >= _period){
       _last += _period;
       return true;
     }
