@@ -4,16 +4,16 @@
 #include <Arduino.h> 
 
 class FancyDelay{
-  unsigned long _period, _next;
+  unsigned long _period, _last;
 
   public:
   FancyDelay(unsigned long period) : _period(period) {
-    _next = millis() + _period;
+    _last = millis();
   }
 
   bool ready(){
-    if(((long) (_next - millis())) >= 0){
-      _next += _period;
+    if((millis() - _last) >= _period){
+      _last += _period;
       return true;
     }
     return false;
@@ -21,16 +21,16 @@ class FancyDelay{
 };
 
 class FancyMicrosDelay{
-  unsigned long _period, _next;
+  unsigned long _period, _last;
 
   public:
   FancyMicrosDelay(unsigned long period) : _period(period) {
-    _next = micros() + _period;
+    _last = micros();
   }
 
   bool ready(){
-    if(((long) (_next - micros())) >= 0){
-      _next += _period;
+    if((micros() - _last) >= _period){
+      _last += _period;
       return true;
     }
     return false;
