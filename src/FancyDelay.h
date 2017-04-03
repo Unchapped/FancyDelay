@@ -12,7 +12,7 @@ class FancyDelay{
   }
 
   bool ready(){
-    if(millis() >= _next){
+    if(((long) (_next - millis())) >= 0){
       _next += _period;
       return true;
     }
@@ -29,7 +29,7 @@ class FancyMicrosDelay{
   }
 
   bool ready(){
-    if(micros() >= _next){
+    if(((long) (_next - micros())) >= 0){
       _next += _period;
       return true;
     }

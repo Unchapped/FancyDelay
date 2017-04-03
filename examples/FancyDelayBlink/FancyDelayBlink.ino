@@ -29,7 +29,7 @@ const int ledPin =  13;      // the number of the LED pin
 int ledState = LOW;             // ledState used to set the LED
 
 // Create a new FancyDelay object, with a frequency of one second (1000 ms)
-FancyDelay onesec = FancyDelay(1000);
+FancyDelay oneSec(1000);
 
 void setup() {
   // set the digital pin as output:
@@ -39,7 +39,7 @@ void setup() {
 void loop()
 {
   //if one second has passed since the last time we ran
-  if(onesec.ready()){
+  if(oneSec.ready()){
     // toggle the LED state
     if (ledState == LOW)
       ledState = HIGH;
