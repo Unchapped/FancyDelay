@@ -7,13 +7,13 @@
 #######################################
 
 FancyDelay	KEYWORD1
-FancyMicrosDelay	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
 ready	KEYWORD2
+reset	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
