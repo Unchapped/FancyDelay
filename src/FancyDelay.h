@@ -19,6 +19,10 @@ class FancyDelay{
     }
     return false;
   }
+
+  void reset(){
+    _last = _timebase();
+  }
 };
 
 #endif
